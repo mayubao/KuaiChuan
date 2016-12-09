@@ -84,5 +84,8 @@ public class Constant {
         }
     };
 
+
+    public static final String GITHUB_PROJECT_SITE = "https://github.com/mayubao/KuaiChuan/";
+
 }
 

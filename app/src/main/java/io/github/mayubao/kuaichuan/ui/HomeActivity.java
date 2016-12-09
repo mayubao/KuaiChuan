@@ -1,11 +1,15 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -219,6 +223,13 @@ public class HomeActivity extends BaseActivity
 //
 //        }
 
+        if(id == R.id.nav_about){
+            Log.i(TAG, "R.id.nav_about------>>> click");
+            showAboutMeDialog();
+        }else{
+            ToastUtils.show(getContext(), getResources().getString(R.string.tip_next_version_update));
+        }
+
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -277,5 +288,39 @@ public class HomeActivity extends BaseActivity
             ll_mini_main.setAlpha(0);
         }
 
+    }
+
+    /**
+     * 显示对话框
+     */
+    private void showAboutMeDialog(){
+        View contentView = View.inflate(getContext(), R.layout.view_about_me, null);
+        contentView.findViewById(R.id.tv_github).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toProject();
+            }
+        });
+        new AlertDialog.Builder(getContext())
+                .setTitle(getResources().getString(R.string.title_about_me))
+                .setView(contentView)
+                .setPositiveButton(getResources().getString(R.string.str_weiguan), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        toProject();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    /**
+     * 跳转到项目
+     */
+    private void toProject() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri uri = Uri.parse(Constant.GITHUB_PROJECT_SITE);
+        intent.setData(uri);
+        getContext().startActivity(intent);
     }
 }

@@ -90,5 +90,13 @@
     <string name="str_has_send">已传</string>
     <string name="str_has_time">用时</string>
     <string name="str_second">秒</string>
+    <string name="str_about_me">关于作者</string>
+    <string name="tip_next_version_update">此功能下个版本更新</string>
+    <string name="title_about_me">关于作者</string>
+    <string name="str_about_me_desc">作者：mayubao</string>
+    <string name="str_about_me_qq">QQ：345269374</string>
+    <string name="str_about_me_email">Emial:345269374@qq.com</string>
+    <string name="str_about_me_github">Github:https://github.com/mayubao/KuaiChuan/</string>
+    <string name="str_weiguan">围观</string>
 </resources>
 

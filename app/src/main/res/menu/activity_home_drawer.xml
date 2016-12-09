@@ -18,6 +18,10 @@
             android:id="@+id/nav_update"
             android:icon="@drawable/ic_sync_24dp"
             android:title="@string/str_update_version" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_person_outline_24dp"
+            android:title="@string/str_about_me" />
     </group>
 
 </menu>
