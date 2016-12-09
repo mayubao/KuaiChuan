@@ -3,13 +3,20 @@
 仿茄子快传的一款文件传输应用， 涉及到Socket通信，包括TCP，UDP通信。（喜欢的给一个star, 有帮助的给一个folk， 欢迎Star和Folk ^_^）
 
 ##缩略图
+### 主页 ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
 
-![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
-![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
-![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
-![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
-![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
-![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
+### 文件发送端 ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_1.gif)
+
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_2.gif)
+
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_3.gif)
+
+### 文件接收端 ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fr_1.gif)
+
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fr_2.gif)
 
 ##原理
 
@@ -19,7 +26,7 @@
 
 ##测试
 
-在Android测试机 分别是 魅蓝2 与  华为 SCL-TL00， Vivo xs1 运行正常 
+在Android测试机 分别是 魅蓝2 与  华为 SCL-TL00， Vivo xs1 运行正常
 
 ##感谢
 
@@ -33,7 +40,7 @@ stackoverflow  <http://stackoverflow.com/>
 
 ### v1.0 ###
 完成了Android端到Android端的文件传输
- 
+
 
 
 ##issue
