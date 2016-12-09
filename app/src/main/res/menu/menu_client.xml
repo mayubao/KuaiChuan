@@ -1,0 +1,34 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.MainActivity">
+    <item
+        android:id="@+id/action_apk"
+        android:orderInCategory="100"
+        android:title="@string/action_apk"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_jpg"
+        android:orderInCategory="100"
+        android:title="@string/action_jpg"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_mp3"
+        android:orderInCategory="100"
+        android:title="@string/action_mp3"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_mp4"
+        android:orderInCategory="100"
+        android:title="@string/action_mp4"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+</menu>

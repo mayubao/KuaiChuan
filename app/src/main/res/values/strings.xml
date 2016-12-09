@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">茄子快传</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="str_send">我要发送</string>
+    <string name="str_receive">我要接收</string>
+    <string name="str_start">开启</string>
+    <string name="str_stop">关闭</string>
+    <string name="action_disable_ap">关闭热点</string>
+    <string name="str_loadding">正在加载中</string>
+    <string name="str_size">大小</string>
+    <string name="str_path">文件地址：</string>
+    <string name="str_wh">宽高：</string>
+    <string name="str_suspend">停止</string>
+    <string name="str_resume">恢复</string>
+    <string name="str_apk">APK</string>
+    <string name="str_jpeg">JPEG</string>
+    <string name="str_mp3">MP3</string>
+    <string name="str_mp4">MP4</string>
+    <string name="str_desc">描述</string>
+    <string name="action_client">我要发送</string>
+    <string name="action_server">我要接收</string>
+    <string name="action_apk">apk</string>
+    <string name="action_jpg">jpg</string>
+    <string name="action_mp3">MP3</string>
+    <string name="action_mp4">MP4</string>
+    <string name="tip_loading">正在加载中...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_name">名称</string>
+    <string name="title_activity_choose_file">ChooseFileActivity</string>
+    <string name="tip_search">请输入文件名称</string>
+    <string name="str_title">标题</string>
+    <string name="title_choose_file">选择文件</string>
+    <string name="tip_has_no_apk_info">暂时找不到应用的信息</string>
+    <string name="str_has_selected">已选（0）</string>
+    <string name="str_next">下一步</string>
+    <string name="tip_please_click_user_avatar_to_receive">点击接收者头像连接</string>
+    <string name="tip_waiting_file_sender_connect">正在等待发送者连接...</string>
+    <string name="str_device_name">设备名称</string>
+    <string name="str_mac">MAC地址</string>
+    <string name="str_transfer_progress">传输过程</string>
+    <string name="str_cancel">取消</string>
+    <string name="title_file_sender">文件发送</string>
+    <string name="str_has_selected_detail">已选（%d）</string>
+    <string name="tip_please_select_your_file">请选择你要传输的文件</string>
+    <string name="str_check">查看</string>
+    <string name="title_file_receiver">文件接收</string>
+    <string name="title_file_transfer">传送门</string>
+    <string name="tip_now_has_task_is_running_exist_now">当前有文件在传送！ \n 是否退出？</string>
+    <string name="str_yes">是</string>
+    <string name="str_no">否</string>
+    <string name="title_selected_file_list">选中的文件</string>
+    <string name="str_selected_file_info_detail">{count}个文件共{size}</string>
+    <string name="str_selected_file_info_detail_default">0个文件共0K</string>
+    <string name="str_clear">清空</string>
+    <string name="tip_now_is_initial">正在初始化，请稍候...</string>
+    <string name="tip_now_init_is_finish">初始化成功</string>
+    <string name="tip_is_waitting_connect">正在等待连接...</string>
+    <string name="str_has_no_any_msg">您还没有新消息哦~</string>
+    <string name="str_update_version">更新新版本</string>
+    <string name="str_feedback">帮助与反馈</string>
+    <string name="str_computer_transfer">电脑传</string>
+    <string name="str_web_transfer">网页传</string>
+
+    <!--<string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.MyFloatingButtonBehavior</string>-->
+    <string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.FooterBehaviorDependAppBar</string>
+
+
+    <string-array name="array_res">
+        <item>应用</item>
+        <item>图片</item>
+        <item>音乐</item>
+        <item>视频</item>
+    </string-array>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="str_connect_device_count">连接设备数</string>
+    <string name="str_receive_file">收到的文件</string>
+    <string name="str_save_stream">节省流量</string>
+    <string name="str_0">0</string>
+    <string name="str_install">安装</string>
+    <string name="str_open">打开</string>
+    <string name="str_run">运行</string>
+    <string name="tip_call_back_agin_and_exist">再按一次就退出 {appName} </string>
+    <string name="str_unit_mb">MB</string>
+    <string name="str_has_send">已传</string>
+    <string name="str_has_time">用时</string>
+    <string name="str_second">秒</string>
+</resources>
+

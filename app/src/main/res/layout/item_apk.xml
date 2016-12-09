@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_shortcut"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="8dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_below="@id/iv_shortcut"
+        style="@style/style_common_text" />
+    <TextView
+        android:id="@+id/tv_size"
+        style="@style/style_common_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:padding="4dp"
+        android:textColor="@color/darker_gray"
+        android:text="@string/str_size"/>
+    <ImageView
+        android:id="@+id/iv_ok_tick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_shortcut"
+        android:layout_alignRight="@id/iv_shortcut"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="6dp"
+        android:src="@mipmap/icon_ok_tick"
+        android:visibility="gone"/>
+</RelativeLayout>

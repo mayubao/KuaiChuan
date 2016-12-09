@@ -1,0 +1,109 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppMyTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"></style>
+
+    <style name="CustomeTabIndicator" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicatorHeight">2dp</item>
+    </style>
+
+    <style name="style_common_text">
+        <item name="android:text">@string/str_name</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+
+    <style name="style_common_bottom_text_view" parent="style_common_text">
+        <item name="android:layout_width">@dimen/bottom_button_width</item>
+        <item name="android:layout_height">@dimen/bottom_button_height</item>
+        <item name="android:text">@string/str_has_selected</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_bottom_text_next</item>
+    </style>
+
+    <style name="style_home_text_view" parent="style_common_text">
+        <item name="android:layout_width">@dimen/dp_96</item>
+        <item name="android:layout_height">@dimen/dp_28</item>
+        <item name="android:text">@string/str_has_selected</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_home_text_view</item>
+    </style>
+
+    <style name="style_home_big_text_view" parent="style_common_text">
+        <item name="android:layout_width">@dimen/dp_196</item>
+        <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:text">@string/str_has_selected</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_home_text_view_big</item>
+    </style>
+    
+    
+    <style name="style_home_bottom_image_view">
+        <item name="android:layout_width">@dimen/dp_32</item>
+        <item name="android:layout_height">@dimen/dp_32</item>
+        <item name="android:background">@drawable/ic_device_24dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="style_home_bottom_text_view" parent="style_common_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+
+    <style name="style_home_bottom_text_view2" parent="style_common_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/str_connect_device_count</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/darker_gray</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="style_transfer_large_text_view" parent="style_common_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_40</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">@string/str_0</item>
+    </style>
+
+    <style name="style_transfer_unit_text_view" parent="style_common_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">@string/str_unit_mb</item>
+        <item name="android:padding">@dimen/dp_4</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

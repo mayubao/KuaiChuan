@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/colorPrimary"
+    android:layout_gravity="top">
+
+    <!--
+    <ImageView
+        android:id="@+id/iv_mini_avator"
+        android:layout_width="@dimen/avator_mini_with"
+        android:layout_height="@dimen/avator_mini_with"
+        android:layout_margin="@dimen/dp_8"
+        android:src="@mipmap/icon_radish"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" />
+    -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_avator_view">
+        <ImageView
+            android:layout_width="@dimen/dp_18"
+            android:layout_height="@dimen/dp_18"
+            android:background="@drawable/ic_more_vert_4dp"
+            android:layout_centerVertical="true" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_mini_avator"
+            android:layout_width="@dimen/avator_mini_with"
+            android:layout_height="@dimen/avator_mini_with"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:src="@mipmap/icon_radish"
+            app:civ_border_width="1dp"
+            app:civ_border_color="#FFFFFFFF" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_mini_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:alpha="0">
+        <Button
+            android:id="@+id/btn_send"
+            style="@style/style_home_text_view"
+            android:text="@string/str_send"
+            android:layout_marginRight="@dimen/dp_8"/>
+        <Button
+            android:id="@+id/btn_receive"
+            style="@style/style_home_text_view"
+            android:text="@string/str_receive"
+            android:layout_marginRight="@dimen/dp_8"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/style_common_text"
+        android:text="@string/app_name"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:alpha="1"/>
+</RelativeLayout>

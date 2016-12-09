@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/statubar_height"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true">
+        <!--
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/avatar_width"
+            android:layout_height="@dimen/avatar_width"
+            android:src="@mipmap/icon_radish" />
+        -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/avatar_width"
+            android:layout_height="@dimen/avatar_width"
+            android:src="@mipmap/icon_radish"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FFFFFFFF"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/nav_header_text_padding"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="@string/str_device_name"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:layout_alignBottom="@id/iv_avatar"
+            android:padding="@dimen/nav_header_text_padding"
+            android:text="@string/str_has_no_any_msg"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+</RelativeLayout>

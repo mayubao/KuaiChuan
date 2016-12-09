@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="io.github.mayubao.kuaichuan.ui.HomeActivity"
+    tools:showIn="@layout/app_bar_home"
+    android:layout_gravity="bottom">
+    
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_320"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_send_big"
+            style="@style/style_home_big_text_view"
+            android:text="@string/str_send" />
+        <Button
+            android:id="@+id/btn_receive_big"
+            style="@style/style_home_big_text_view"
+            android:text="@string/str_receive"
+            android:layout_marginTop="@dimen/dp_32"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_main"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin">
+        <RelativeLayout
+            android:id="@+id/rl_device"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/selector_default_view">
+            <ImageView
+                android:id="@+id/iv_device"
+                style="@style/style_home_bottom_image_view"/>
+            <TextView
+                android:id="@+id/tv_device_desc"
+                style="@style/style_home_bottom_text_view"
+                android:layout_below="@id/iv_device"
+                android:text="@string/str_0"/>
+            <TextView
+                style="@style/style_home_bottom_text_view2"
+                android:layout_below="@id/tv_device_desc" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_file"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/selector_default_view">
+            <ImageView
+                android:id="@+id/iv_file"
+                style="@style/style_home_bottom_image_view"
+                android:background="@drawable/ic_file_24dp"/>
+            <TextView
+                android:id="@+id/tv_file_desc"
+                style="@style/style_home_bottom_text_view"
+                android:layout_below="@id/iv_file"
+                android:text="@string/str_0"/>
+            <TextView
+                style="@style/style_home_bottom_text_view2"
+                android:layout_below="@id/tv_file_desc"
+                android:text="@string/str_receive_file"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_storage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/selector_default_view">
+            <ImageView
+                android:id="@+id/iv_storage"
+                style="@style/style_home_bottom_image_view"
+                android:background="@drawable/ic_storage_24dp" />
+            <TextView
+                android:id="@+id/tv_storage_desc"
+                style="@style/style_home_bottom_text_view"
+                android:layout_below="@id/iv_storage"
+                android:text="@string/str_0"/>
+            <TextView
+                style="@style/style_home_bottom_text_view2"
+                android:layout_below="@id/tv_storage_desc"
+                android:text="@string/str_save_stream"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

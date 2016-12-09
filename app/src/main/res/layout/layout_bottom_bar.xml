@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_selected"
+            style="@style/style_common_bottom_text_view"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/selector_bottom_text_common"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/style_common_bottom_text_view"
+            android:text="@string/str_next" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

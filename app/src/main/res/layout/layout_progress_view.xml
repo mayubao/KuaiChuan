@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_progress"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_56"
+    android:layout_below="@id/topbar"
+    tools:showIn="@layout/activity_file_sender">
+
+    <ProgressBar
+        android:id="@+id/pb_total"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:progressDrawable="@drawable/progressbar_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_4">
+
+
+                <TextView
+                    android:id="@+id/tv_unit_storage"
+                    style="@style/style_transfer_unit_text_view"
+                    android:layout_alignParentRight="true" />
+
+                <TextView
+                    android:id="@+id/tv_unit_has_send"
+                    style="@style/style_transfer_unit_text_view"
+                    android:text="@string/str_has_send"
+                    android:layout_below="@id/tv_unit_storage"
+                    android:layout_alignParentRight="true" />
+
+                <TextView
+                    android:id="@+id/tv_value_storage"
+                    style="@style/style_transfer_large_text_view"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/tv_unit_storage"
+                    android:layout_marginRight="@dimen/dp_12" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:padding="@dimen/dp_4">
+
+            <TextView
+                android:id="@+id/tv_value_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/style_transfer_large_text_view"
+                android:layout_marginRight="@dimen/dp_12" />
+
+            <TextView
+                android:id="@+id/tv_unit_time"
+                style="@style/style_transfer_unit_text_view"
+                android:text="@string/str_second"
+                android:layout_toRightOf="@id/tv_value_time"
+                android:layout_alignParentRight="false" />
+
+            <TextView
+                android:id="@+id/tv_unit_has_time"
+                style="@style/style_transfer_unit_text_view"
+                android:text="@string/str_has_time"
+                android:layout_below="@id/tv_unit_time"
+                android:layout_toRightOf="@id/tv_value_time" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

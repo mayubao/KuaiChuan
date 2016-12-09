@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.mayubao.kuaichuan">
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".AppContext"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+        <activity
+            android:name=".ui.HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".ui.ClientActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.ServerActivity"
+            android:theme="@style/AppTheme" />
+
+        <!-- 选择文件UI -->
+        <activity
+            android:name=".ui.ChooseFileActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- 选择文件接收者UI -->
+        <activity
+            android:name=".ui.ChooseReceiverActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- 接收者等待界面UI -->
+        <activity
+            android:name=".ui.ReceiverWaitingActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- 文件发送列表界面UI -->
+        <activity
+            android:name=".ui.FileSenderActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!-- 文件接收列表界面UI -->
+        <activity
+            android:name=".ui.FileReceiverActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+    </application>
+
+</manifest>

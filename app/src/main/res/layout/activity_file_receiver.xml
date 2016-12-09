@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary">
+    <include
+        android:id="@+id/topbar"
+        layout="@layout/layout_top_bar" />
+
+    <include
+        android:id="@+id/progress_view"
+        layout="@layout/layout_progress_view" />
+
+    <ListView
+        android:id="@+id/lv_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/progress_view"
+        android:divider="@null"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/white"/>
+
+</RelativeLayout>

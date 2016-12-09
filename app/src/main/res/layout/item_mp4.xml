@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_shortcut"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="4dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/icon_mp4"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_shortcut"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_common_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:gravity="left"/>
+        <TextView
+            android:id="@+id/tv_size"
+            style="@style/style_common_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/darker_gray"
+            android:text="@string/str_size"
+            android:gravity="left"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/iv_shortcut"
+        android:layout_toRightOf="@id/iv_shortcut"/>
+
+    <ImageView
+        android:id="@+id/iv_ok_tick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_shortcut"
+        android:layout_alignRight="@id/iv_shortcut"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="6dp"
+        android:src="@mipmap/icon_ok_tick"
+        android:visibility="gone"/>
+</RelativeLayout>

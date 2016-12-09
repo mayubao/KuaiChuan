@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_device"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/icon_radish"
+        android:padding="4dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FFFFFFFF"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_device"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_common_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:gravity="left"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/tv_mac"
+            style="@style/style_common_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:text="@string/str_mac"
+            android:gravity="left"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/white"
+        android:layout_below="@id/iv_device"
+        android:layout_toRightOf="@id/iv_device"/>
+
+    <ImageView
+        android:id="@+id/iv_ok_tick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_shortcut"
+        android:layout_alignRight="@id/iv_shortcut"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="6dp"
+        android:src="@mipmap/icon_ok_tick"
+        android:visibility="gone"/>
+</RelativeLayout>

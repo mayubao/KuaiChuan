@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_operation"
+            style="@style/style_common_bottom_text_view"
+            android:layout_width="48dp"
+            android:layout_height="24dp"
+            android:text="@string/str_clear"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:background="@drawable/selector_bottom_text_common"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/style_common_text"
+            android:padding="8dp"
+            android:text="@string/str_selected_file_info_detail"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_top"
+        android:divider="@null"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/white"/>
+</RelativeLayout>

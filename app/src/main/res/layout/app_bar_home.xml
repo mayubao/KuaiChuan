@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+
+    <!--
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <ImageView
+                android:id="@+id/iv_mini_avator"
+                android:layout_width="@dimen/avator_mini_with"
+                android:layout_height="@dimen/avator_mini_with"
+                android:src="@mipmap/ic_launcher"
+                android:layout_gravity="left"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="right"
+                android:gravity="center_vertical">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/style_home_text_view"
+                    android:text="@string/str_send"
+                    android:layout_marginRight="@dimen/nav_header_text_padding"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/style_home_text_view"
+                    android:text="@string/str_receive"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    -->
+
+    <!-- 设置顶部 layout_gravity="top"-->
+    <io.github.mayubao.kuaichuan.ui.view.MyScrollView
+        android:id="@+id/msv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/content_home" />
+        </LinearLayout>
+    </io.github.mayubao.kuaichuan.ui.view.MyScrollView>
+
+
+    <!-- 设置顶部 layout_gravity="top"-->
+    <include layout="@layout/layout_common_tool_bar" />
+
+
+</android.support.design.widget.CoordinatorLayout>
