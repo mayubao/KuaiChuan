@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary">
+    <include
+        android:id="@+id/topbar"
+        layout="@layout/layout_top_bar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topbar"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_tip_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/style_web_transfer_text"
+            android:text="@string/tip_web_transfer_first_tip"
+            android:padding="@dimen/dp_12"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/darker_gray"
+            android:padding="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_28"
+            android:layout_marginRight="@dimen/dp_28"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/style_web_transfer_text"
+            android:text="@string/tip_web_transfer_second_tip"
+            android:padding="@dimen/dp_12"/>
+
+        <Button
+            android:id="@+id/tv_tip_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/str_restart_hotspot"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</RelativeLayout>

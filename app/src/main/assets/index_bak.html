@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>茄子快传--即时传</title>
+ <style type="text/css">
+  body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, legend, button, form, fieldset, input, textarea, p, blockquote, th, td {
+  padding: 0;
+  margin: 0;
+  }
+  body {
+  background:#e9e9e9;
+  color:#333;
+  font-size:1.2em;
+  font-family:"微软雅黑";
+  width: 100%;
+  height: 100%;
+  }
+  img {
+  vertical-align:middle;
+  }
+  h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+  font-size: 100%;
+  }
+  a:hover {
+  cursor:pointer;
+  }
+  a {
+  text-decoration:none;
+  }
+  .clear {
+  clear:both;
+  }
+  body {
+  font-size: 62.5%;
+  padding-bottom: 50px;
+  }
+  .box {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  }
+  .bar {
+  width:100%;
+  height: 120px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom: 1px solid #d2d2d2;
+  border-top: 1px solid #a9a9a9;
+  display: none;
+  }
+  .bar .icon {
+  margin: 16px;
+  float: left;
+  background: url("http://192.168.43.1:2999/apps/com.lenovo.anyshare.png") no-repeat center;
+  background-size: 100%;
+  width: 88px;
+  height: 88px;
+  display: block;
+  }
+  .bar .info {
+  width: 60%;
+  margin-top: 20px;
+  float: left;
+  line-height: 43px;
+  color: #191919;
+  }
+  .bar .info h4 {
+  font-size: 3.0em;
+  }
+  .bar .info p {
+  font-size: 2.2em;
+  }
+  .down {
+  width: 20%;
+  float: right;
+  margin-right: 10px;
+  }
+  .downqz {
+  background: #2999f9;
+  border-radius: 3px;
+  color:#fff;
+  margin-top: 1em;
+  font-size: 2.4em;
+  line-height: 50px;
+  text-align: center;
+  padding:8px 10px 8px 10px;
+  display:block;
+  float: right;
+  margin-right: 5px;
+  }
+  .say {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  }
+  .say p {
+  font-size: 2.7em;
+  line-height: 1.1em;
+  margin: 0 auto;
+  text-align: center;
+  }
+  .content {
+  width: 94%;
+  margin: 0 auto;
+  border: 1px solid #d2d2d2;
+  background: #fff;
+  display: block;
+  }
+  .content .listhead {
+  height: 140px;
+  width: 100%;
+  border-bottom: 1px solid #d5d5d5;
+  }
+  .use {
+  float: left;
+  }
+  .content .listhead img {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  float: left;
+  }
+  .content .listhead .utitle {
+  margin-top: 55px;
+  font-size: 3.0em;
+  height: 30px;
+  float: left;
+  }
+  .content .listhead .utitle span {
+  color:#0DABFE;
+  }
+  .content .listitem {
+  padding-left: 20px;
+  display: block;
+  }
+  .listitem .title {
+  font-size: 2.7em;
+  line-height: 30px;
+  padding:0.5em;
+  border-bottom: 1px solid #d5d5d5;
+  padding-left: 0;
+  }
+  .listitem .title span {
+  color: #0dabfe;
+  }
+  .listitem .item {
+  height:15%;
+  padding-top: 0.5em;
+  width: 100%;
+  background: #fff;
+  display: block;
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 2px;
+  }
+  .item img {
+  width:15.5%;
+  float: left;
+  overflow: hidden;
+  }
+  .item .cont {
+  width: 60%;
+  margin-left: 4.5%;
+  color: #262626;
+  font-size: 2.8em;
+  line-height: 40px;
+  float: left;
+  overflow: hidden;
+  margin-top: 0.2em;
+  }
+  .item .cont p {
+  margin: 0 ;
+  overflow: hidden;
+  white-space: nowrap;
+  }
+  .item .down {
+  width: 48px;
+  height: 48px;
+  background:url("assets/download.png") no-repeat center;
+  background-size: 100%;
+  float: right;
+  margin-top: 1em;
+  margin-right: 20px;
+  }
+  @media only screen and (max-width: 339px) {
+  body {
+  font-size: 32%;
+  }
+  .bar {
+  height: 50px;
+  margin: 0 auto;
+  padding: 6px 0 6px 0;
+  }
+  .bar .icon {
+  margin: 4px;
+  width: 45px;
+  height: 45px;
+  }
+  .bar .info {
+  width:57%;
+  margin-top: 10px;
+  line-height: 15px;
+  float: left;
+  }
+  .bar .info h4 {
+  font-size: 3.0em;
+  }
+  .bar .info p {
+  font-size: 2.2em;
+  line-height: 2.3em;
+  }
+  .downqz {
+  font-size: 2.5em;
+  line-height: 2.5em;
+  padding:0px 8px 0px 8px;
+  }
+  .say {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  }
+  .say p {
+  line-height: 1.1em;
+  }
+  .content .listhead {
+  height: 70px;
+  }
+  .content .listhead img {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  }
+  .content .listhead .utitle {
+  margin-top: 2em;
+  font-size: 3.0em;
+  height: 15px;
+  }
+  .content .listitem {
+  padding-left: 10px;
+  }
+  .listitem .title {
+  font-size: 3em;
+  line-height: 2em;
+  padding:0.3em;
+  padding-left: 0;
+  }
+  .listitem .item {
+  height: 40px;
+  padding-top: 6px;
+  }
+  .item img {
+  width:40px;
+  height:40px;
+  }
+  .item .cont {
+  line-height: 1.2em;
+  display: inline-block;
+  margin-top: 5px;
+  }
+  .item .down {
+  width:25px;
+  height:25px;
+  margin-right: 10px;
+  margin-top: 0.7em;
+  }
+  } @media only screen and (min-width: 340px)and (max-width: 479px) {
+  body {
+  font-size: 36%;
+  }
+  .bar {
+  height: 60px;
+  margin: 0 auto;
+  padding: 10px 0 10px 0;
+  }
+  .bar .icon {
+  margin: 8px;
+  width: 45px;
+  height: 45px;
+  }
+  .bar .info {
+  margin-top: 10px;
+  line-height: 20px;
+  float: left;
+  }
+  .bar .info h4 {
+  font-size: 3.0em;
+  }
+  .bar .info p {
+  font-size: 2.2em;
+  }
+  .downqz {
+  font-size: 2.5em;
+  line-height: 2.5em;
+  padding:0 5px 0 5px;
+  margin-top: 0.6em;
+  }
+  .say {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  }
+  .content .listhead {
+  height: 70px;
+  }
+  .content .listhead img {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  }
+  .content .listhead .utitle {
+  margin-top: 1.6em;
+  font-size: 3.0em;
+  height: 15px;
+  }
+  .listitem .title {
+  font-size: 3em;
+  line-height: 2em;
+  padding:0.3em;
+  padding-left: 0;
+  }
+  .listitem .item {
+  height: 55px;
+  }
+  .item .cont {
+  line-height: 1.1em;
+  margin-top: 0.2em
+  }
+  .item .down {
+  width:30px;
+  height:30px;
+  margin-right: 15px;
+  margin-top: 1em;
+  }
+  } @media only screen and (min-width: 480px)and (max-width: 549px) {
+  body {
+  font-size: 45%;
+  }
+  .bar {
+  height: 80px;
+  padding:10px 0 10px 0;
+  }
+  .bar .icon {
+  margin: 1em;
+  width: 60px;
+  height: 60px;
+  }
+  .bar .info {
+  width: 60%;
+  margin-top: 20px;
+  line-height: 2.5em;
+  }
+  .downqz {
+  font-size: 2em;
+  line-height: 2em;
+  }
+  .content .listhead {
+  height: 88px;
+  }
+  .content .listhead img {
+  width: 64px;
+  height: 64px;
+  margin: 12px;
+  }
+  .content .listhead .utitle {
+  margin-top: 1.5em;
+  font-size: 3.0em;
+  height: 15px;
+  }
+  .listitem .title {
+  font-size: 3em;
+  line-height: 2em;
+  padding:0.4em;
+  padding-left: 0;
+  }
+  .listitem .item {
+  height: 65px;
+  }
+  .item .cont {
+  line-height: 1.5em;
+  }
+  .item .down {
+  width:40px;
+  height:40px;
+  font-size: 2.4em;
+  margin-right: 1.2em;
+  margin-top: 0.8em;
+  }
+  } @media only screen and (min-width: 550px)and (max-width: 639px) {
+  body {
+  font-size: 55%;
+  }
+  .bar {
+  height: 80px;
+  padding:10px 0 10px 0;
+  }
+  .bar .icon {
+  margin: 1em;
+  width: 60px;
+  height: 60px;
+  }
+  .bar .info {
+  width: 60%;
+  margin-top: 20px;
+  line-height: 3em;
+  }
+  .downqz {
+  font-size: 1.8em;
+  line-height: 1.8em;
+  }
+  .content .listhead {
+  height: 88px;
+  }
+  .content .listhead img {
+  width: 64px;
+  height: 64px;
+  margin: 12px;
+  }
+  .content .listhead .utitle {
+  margin-top: 1.5em;
+  font-size: 3.0em;
+  height: 15px;
+  }
+  .listitem .title {
+  font-size: 3em;
+  line-height: 2em;
+  padding-left: 0;
+  }
+  .listitem .item {
+  height: 80px;
+  }
+  .item .cont {
+  line-height: 1.5em;
+  }
+  .item .down {
+  width:40px;
+  height:40px;
+  font-size: 2.4em;
+  margin-right: 1.2em;
+  margin-top: 0.8em;
+  }
+  } @media only screen and (min-width: 640px)and (max-width: 1030px) {
+  body {
+  font-size: 52%;
+  }
+  .bar {
+  height: 80px;
+  padding:10px 0 10px 0;
+  }
+  .bar .icon {
+  margin: 1em;
+  width: 60px;
+  height: 60px;
+  }
+  .bar .info {
+  width: 60%;
+  margin-top: 10px;
+  line-height: 3.5em;
+  }
+  .downqz {
+  font-size: 1.8em;
+  line-height: 1.8em;
+  }
+  .content .listhead {
+  height: 88px;
+  }
+  .content .listhead img {
+  width: 64px;
+  height: 64px;
+  margin: 12px;
+  }
+  .content .listhead .utitle {
+  margin-top: 1.5em;
+  font-size: 3.0em;
+  height: 15px;
+  }
+  .listitem .title {
+  font-size: 3em;
+  line-height: 2em;
+  padding-left: 0;
+  }
+  .listitem .item {
+  height: 80px;
+  }
+  .item .cont {
+  line-height: 1.5em;
+  }
+  .item img {
+  width: 10%;
+  }
+  .item .down {
+  width:40px;
+  height:40px;
+  font-size: 2.4em;
+  margin-right: 1.2em;
+  margin-top: 0.8em;
+  }
+  } @media only screen and (min-width: 1030px) {
+  .listitem .item {
+  height: 140px;
+  max-height:150px;
+  }
+  .item img {
+  width: 10%;
+  }
+  .item .down {
+  margin-top: 40px;
+  }
+  }
+ </style>
+</head>
+<body>
+<div class="box">
+ <div class="bar" id="bar">
+  <div class="icon"></div>
+  <div class="info">
+   <h4>{app_name}</h4>
+   <p>带给你更极速完美的传输体验。</p>
+  </div>
+  <a href="" class="downqz">立即安装</a>
+ </div>
+ <div class="say">
+  <p>这是{app_name}的即时分享页面，</p>
+  <p>您可以零流量下载 ta 分享的文件。</p>
+ </div>
+ <div class="content" id="content">
+  <div class="listhead">
+   <div class="use">
+    <img src="./茄子快传--即时传_files/loadusericon" />
+   </div>
+   <div class="utitle">
+    <span>{file_share} </span> 分享了
+    <span>{file_count} </span>个文件
+   </div>
+  </div>
+
+  {file_list_template}
+
+  <!-- 显示文件格式 start-->
+  <!--
+  <div class="listitem">
+   <div class="title">
+    {class_name}&nbsp;
+    <span>( {class_count} )</span>
+   </div>
+   <div class="item">
+    <img src="{file_avatar}" />
+    <div class="cont">
+     <p>{file_name}</p>
+     <p>{file_size}</p>
+    </div>
+    <a class="down" style="text-align:center; font-size:12px; color:black;" href="{file_path}">下载</a>
+   </div>
+  </div>
+  -->
+  <!-- 显示文件格式 end-->
+
+
+ </div>
+</div>
+</div>
+</body>
+</html>

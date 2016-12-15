@@ -53,6 +53,11 @@ public class FileUtils {
     public static final String DEFAULT_ROOT_PATH = "/mnt/download/kuaichuan/";
 
     /**
+     * 默认的缩略图目录
+     */
+    public static final String DEFAULT_SCREENSHOT_PATH = "/mnt/kc_screenshot/";
+
+    /**
      * 小数的格式化
      */
     public static final DecimalFormat FORMAT = new DecimalFormat("####.##");
@@ -116,6 +121,21 @@ public class FileUtils {
     }
 
     /**
+     * 查找指定文件名的文件
+     * @param context
+     * @param fileName
+     * @return
+     */
+    public static FileInfo getFileInfo(Context context, String fileName){
+        List<FileInfo> fileInfoList = getSpecificTypeFiles(context, new String[]{fileName});
+        if(fileInfoList == null && fileInfoList.size() == 0){
+            return null;
+        }
+
+        return fileInfoList.get(0);
+    }
+
+    /**
      * 转化完整信息的FileInfo
      * @param context
      * @param fileInfoList
@@ -167,6 +187,18 @@ public class FileUtils {
         String path = DEFAULT_ROOT_PATH;
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
             path = Environment.getExternalStorageDirectory() + "/kuaichuan/";
+        }
+        return path;
+    }
+
+    /**
+     * 获取文件缩略图目录
+     * @return
+     */
+    public static String getScreenShotDirPath(){
+        String path = DEFAULT_SCREENSHOT_PATH;
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+            path = Environment.getExternalStorageDirectory() + "/kc_screenshot/";
         }
         return path;
     }
@@ -370,6 +402,21 @@ public class FileUtils {
             return false;
         }
         if(filePath.lastIndexOf(FileInfo.EXTEND_JPG) > 0 || filePath.lastIndexOf(FileInfo.EXTEND_JPEG) > 0){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 判断文件是否为PNG
+     * @param filePath
+     * @return
+     */
+    public static boolean isPngFile(String filePath){
+        if(filePath == null || filePath.equals("")){
+            return false;
+        }
+        if(filePath.lastIndexOf(FileInfo.EXTEND_PNG) > 0 ){
             return true;
         }
         return false;
@@ -777,6 +824,105 @@ public class FileUtils {
             localFilePath = getSpecifyDirPath(FileInfo.TYPE_MP4) + getFileName(remoteFilePath);
         }
         return localFilePath;
+    }
+
+
+    /**
+     * 判断文件的缩略图是否存在
+     * @param fileName
+     * @return
+     */
+    public static boolean isExistScreenShot(String fileName){
+        File file = new File(FileUtils.getScreenShotDirPath() + fileName);
+        if(file.exists()){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取文件缩略图的路径
+     * @param fileName
+     * @return
+     */
+    public static String getScreenShotFilePath(String fileName){
+        File dirFile = new File(FileUtils.getScreenShotDirPath());
+        if(!dirFile.exists()) dirFile.mkdirs();
+
+        if(isMp3File(fileName)){
+            return FileUtils.getScreenShotDirPath() + "mp3.png";
+        }
+        return FileUtils.getScreenShotDirPath() + fileName.replace(".", "_") + ".png";
+    }
+
+
+    /**
+     * 自动生成缩略图
+     * @param context
+     * @param filePath
+     * @return
+     */
+    public synchronized static void autoCreateScreenShot(Context context, String filePath) throws IOException {
+        String fileName = FileUtils.getFileName(filePath);
+
+        File screenshotFile = null;
+        Bitmap screenshotBitmap = null;
+        FileOutputStream fos = null;
+
+        //check the screenshot image file exist in disk? if exist return the file, or create the screen image file
+        if(FileUtils.isApkFile(filePath)){//apk 缩略图处理
+            if(!FileUtils.isExistScreenShot(fileName)){
+                screenshotFile = new File(getScreenShotFilePath(fileName));
+                if(!screenshotFile.exists()) screenshotFile.createNewFile();
+                fos = new FileOutputStream(screenshotFile);
+                screenshotBitmap = ApkUtils.drawableToBitmap(ApkUtils.getApkThumbnail(context, filePath));
+                screenshotBitmap = ScreenshotUtils.extractThumbnail(screenshotBitmap, 96, 96);
+                screenshotBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            }
+        }else if(FileUtils.isJpgFile(filePath)){//jpg 缩略图处理
+            if(!FileUtils.isExistScreenShot(fileName)){
+                screenshotFile = new File(getScreenShotFilePath(fileName));
+                if(!screenshotFile.exists()) screenshotFile.createNewFile();
+                fos = new FileOutputStream(screenshotFile);
+                screenshotBitmap = FileUtils.getScreenshotBitmap(context, filePath, FileInfo.TYPE_JPG);
+                screenshotBitmap = ScreenshotUtils.extractThumbnail(screenshotBitmap, 96, 96);
+                screenshotBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            }
+
+        }else if(FileUtils.isMp3File(filePath)){//mp3 缩略图处理
+            //DO NOTHING mp3文件可以没有缩略图 可指定
+            screenshotFile = new File(FileUtils.getScreenShotDirPath() + "mp3.png");
+            if (!screenshotFile.exists()) screenshotFile.createNewFile();
+            fos = new FileOutputStream(screenshotFile);
+            screenshotBitmap = FileUtils.getScreenshotBitmap(context, filePath, FileInfo.TYPE_MP3);
+            screenshotBitmap = ScreenshotUtils.extractThumbnail(screenshotBitmap, 96, 96);
+            screenshotBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        }else if(FileUtils.isMp4File(filePath)){//MP4 缩略图处理
+            if(!FileUtils.isExistScreenShot(fileName)){
+                screenshotFile = new File(getScreenShotFilePath(fileName));
+                if(!screenshotFile.exists()) screenshotFile.createNewFile();
+                fos = new FileOutputStream(screenshotFile);
+                screenshotBitmap = FileUtils.getScreenshotBitmap(context, filePath, FileInfo.TYPE_MP4);
+                screenshotBitmap = ScreenshotUtils.extractThumbnail(screenshotBitmap, 96, 96);
+                screenshotBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            }
+        }else if(FileUtils.isMp4File(filePath)) {//MP4 缩略图处理
+            screenshotFile = new File(FileUtils.getScreenShotDirPath() + "logo.png");
+            if (!screenshotFile.exists()) screenshotFile.createNewFile();
+            fos = new FileOutputStream(screenshotFile);
+            screenshotBitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_logo);
+            screenshotBitmap = ScreenshotUtils.extractThumbnail(screenshotBitmap, 96, 96);
+            screenshotBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        }
+
+        if(screenshotBitmap != null){
+            screenshotBitmap.recycle();
+        }
+
+        if(fos != null){
+            fos.close();
+            fos = null;
+        }
     }
 
 

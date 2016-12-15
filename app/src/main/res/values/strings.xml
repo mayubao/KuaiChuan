@@ -17,6 +17,10 @@
     <string name="str_jpeg">JPEG</string>
     <string name="str_mp3">MP3</string>
     <string name="str_mp4">MP4</string>
+    <string name="str_apk_desc">应用</string>
+    <string name="str_jpeg_desc">图片</string>
+    <string name="str_mp3_desc">音乐</string>
+    <string name="str_mp4_desc">视频</string>
     <string name="str_desc">描述</string>
     <string name="action_client">我要发送</string>
     <string name="action_server">我要接收</string>
@@ -98,5 +102,17 @@
     <string name="str_about_me_email">Emial:345269374@qq.com</string>
     <string name="str_about_me_github">Github:https://github.com/mayubao/KuaiChuan/</string>
     <string name="str_weiguan">围观</string>
+    <string name="tip_web_transfer_first_tip">
+        第1步 \n
+        请好友连入我的热点\"{hotspot}\"
+    </string>
+    <string name="tip_web_transfer_second_tip">
+        第2步 \n
+        请好友在浏览器输入以下网址 \n
+        http://192.168.43.1:3999
+    </string>
+    <string name="str_restart_hotspot">重启热点</string>
+    <string name="title_web_transfer">网页传</string>
+
 </resources>
 

@@ -42,6 +42,14 @@ public class Constant {
      */
     public static final int DEFAULT_SERVER_COM_PORT = 8099;
 
+
+
+    /**
+     * Android微型服务器 默认端口
+     */
+    public static final int DEFAULT_MICRO_SERVER_PORT = 3999;
+
+
     /**
      * wifi scan result key
      */
@@ -87,5 +95,11 @@ public class Constant {
 
     public static final String GITHUB_PROJECT_SITE = "https://github.com/mayubao/KuaiChuan/";
 
+
+    /**
+     * asset 资源名称
+     */
+    public static final String NAME_FILE_TEMPLATE = "file.template";
+    public static final String NAME_CLASSIFY_TEMPLATE = "classify.template";
 }
 

@@ -24,6 +24,7 @@ public class FileInfo implements Serializable{
     public static final String EXTEND_APK = ".apk";
     public static final String EXTEND_JPEG = ".jpeg";
     public static final String EXTEND_JPG = ".jpg";
+    public static final String EXTEND_PNG = ".png";
     public static final String EXTEND_MP3 = ".mp3";
     public static final String EXTEND_MP4 = ".mp4";
 

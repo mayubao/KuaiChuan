@@ -1,0 +1,8 @@
+<div class="item">
+<img src="{file_avatar}" />
+<div class="cont">
+ <p>{file_name}</p>
+ <p>{file_size}</p>
+</div>
+<a class="down" style="text-align:center; font-size:12px; color:black;" href="{file_path}">下载</a>
+</div>

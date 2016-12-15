@@ -226,6 +226,9 @@ public class HomeActivity extends BaseActivity
         if(id == R.id.nav_about){
             Log.i(TAG, "R.id.nav_about------>>> click");
             showAboutMeDialog();
+        }else if(id == R.id.nav_web_transfer){
+            Log.i(TAG, "R.id.nav_web_transfer------>>> click");
+            NavigatorUtils.toWebTransferUI(getContext());
         }else{
             ToastUtils.show(getContext(), getResources().getString(R.string.tip_next_version_update));
         }

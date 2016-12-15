@@ -66,6 +66,12 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <!-- 网页传界面UI-->
+        <activity
+            android:name=".ui.WebTransferActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

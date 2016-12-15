@@ -20,4 +20,16 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         System.out.println(FileUtils.getFileSize(1023*1024*1024 + 1023*1024));
         System.out.println(FileUtils.getFileSize(1023 * 1024 * 1024 * 1024l + 1023 * 1024 * 1024l));
     }
+
+
+    public static void testReplace(){
+        String string = "<h4>{app_name}</h4><h4>{app_name}</h4><h4>{app_name}</h4><h4>{app_name}</h4><h4>{app_name}</h4>";
+        String newString = string.replaceAll("\\{app_name\\}", "fuckyou");
+        System.out.println(newString);
+    }
+
+    public static  void main(String[] args){
+        testReplace();
+    }
+
 }

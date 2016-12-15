@@ -13,6 +13,7 @@ import io.github.mayubao.kuaichuan.ui.ChooseReceiverActivity;
 import io.github.mayubao.kuaichuan.ui.FileReceiverActivity;
 import io.github.mayubao.kuaichuan.ui.FileSenderActivity;
 import io.github.mayubao.kuaichuan.ui.ReceiverWaitingActivity;
+import io.github.mayubao.kuaichuan.ui.WebTransferActivity;
 
 /**
  * UI导航的工具类
@@ -100,6 +101,20 @@ public class NavigatorUtils {
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setDataAndType(uri, "*/*");
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 跳转到网页传UI
+     * @param context
+     */
+    public static void toWebTransferUI(Context context){
+        if(context == null) {
+            throw new RuntimeException("Context not be null!!!");
+        }
+
+        Intent intent = new Intent(context, WebTransferActivity.class);
         context.startActivity(intent);
     }
 

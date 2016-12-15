@@ -1,0 +1,7 @@
+<div class="listitem">
+<div class="title">
+{class_name}&nbsp;
+<span>( {class_count} )</span>
+</div>
+    {file_list}
+</div>

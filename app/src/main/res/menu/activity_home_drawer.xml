@@ -7,7 +7,7 @@
             android:icon="@mipmap/icon_computer"
             android:title="@string/str_computer_transfer" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_web_transfer"
             android:icon="@mipmap/icon_web"
             android:title="@string/str_web_transfer" />
         <item
