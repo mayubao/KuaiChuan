@@ -108,7 +108,8 @@ public class AndroidMicroServer {
 
         if(mServerSocket != null){
             try {
-                mServerSocket.accept();
+//                mServerSocket.accept(); //fuck ! fix the problem， block the main thread
+                mServerSocket.close();
                 mServerSocket = null;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -159,6 +160,9 @@ public class AndroidMicroServer {
             SLog.i(TAG, socketAddress + "requestLine------>>>" + requestLine);
             String requestType = requestLine.split(" ")[0];
             String requestUri = requestLine.split(" ")[1];
+
+//            //解决URL中文乱码的问题
+//            requestUri = URLDecoder.decode(requestUri, "UTF-8");
 
             request.setUri(requestUri);
 

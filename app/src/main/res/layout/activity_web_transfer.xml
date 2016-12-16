@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/topbar"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_12">
         <TextView
             android:id="@+id/tv_tip_1"
             android:layout_width="match_parent"
@@ -28,14 +29,20 @@
             android:layout_marginLeft="@dimen/dp_28"
             android:layout_marginRight="@dimen/dp_28"/>
         <TextView
+            android:id="@+id/tv_tip_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/style_web_transfer_text"
             android:text="@string/tip_web_transfer_second_tip"
             android:padding="@dimen/dp_12"/>
+        <ImageView
+            android:layout_width="@dimen/dp_96"
+            android:layout_height="@dimen/dp_96"
+            android:src="@mipmap/web_transfer_url"
+            android:layout_gravity="center_horizontal"/>
 
         <Button
-            android:id="@+id/tv_tip_2"
+            android:id="@+id/button_restart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

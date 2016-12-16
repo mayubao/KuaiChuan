@@ -8,7 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.net.URLDecoder;
 
 import io.github.mayubao.kuaichuan.core.entity.FileInfo;
 import io.github.mayubao.kuaichuan.core.utils.FileUtils;
@@ -46,6 +48,14 @@ public class ImageResUriHandler implements ResUriHandler {
         //1.get the image file name from the uri
         String uri = request.getUri();
         String fileName = uri.substring(uri.lastIndexOf("/") + 1, uri.length());
+
+        //bug :resolve chinese incorrect code
+        try {
+            fileName = URLDecoder.decode(fileName, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         FileInfo fileInfo = FileUtils.getFileInfo(this.mActivity, fileName);
 
         //2.check the local system has the file. if has, return the image file, else return 404 to the client

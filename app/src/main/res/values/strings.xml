@@ -104,12 +104,14 @@
     <string name="str_weiguan">围观</string>
     <string name="tip_web_transfer_first_tip">
         第1步 \n
-        请好友连入我的热点\"{hotspot}\"
+        请好友连入我的热点 \n
+        \"{hotspot}\"
     </string>
     <string name="tip_web_transfer_second_tip">
         第2步 \n
         请好友在浏览器输入以下网址 \n
-        http://192.168.43.1:3999
+        http://192.168.43.1:3999 \n
+        或者扫描二维码
     </string>
     <string name="str_restart_hotspot">重启热点</string>
     <string name="title_web_transfer">网页传</string>

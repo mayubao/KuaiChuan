@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import java.io.File;
 
+import io.github.mayubao.kuaichuan.Constant;
 import io.github.mayubao.kuaichuan.core.utils.FileUtils;
 import io.github.mayubao.kuaichuan.ui.ChooseFileActivity;
 import io.github.mayubao.kuaichuan.ui.ChooseReceiverActivity;
@@ -24,15 +25,25 @@ import io.github.mayubao.kuaichuan.ui.WebTransferActivity;
 public class NavigatorUtils {
 
     /**
-     * 跳转到选择文件UI
+     * 跳转到文件选择UI
      * @param context
+     * @param isWebTransfer 是否要网页传
      */
-    public static void toChooseFileUI(Context context){
+    public static void toChooseFileUI(Context context, boolean isWebTransfer){
         if(context == null) {
             throw new RuntimeException("Context not be null!!!");
         }
         Intent intent = new Intent(context, ChooseFileActivity.class);
+        intent.putExtra(Constant.KEY_WEB_TRANSFER_FLAG, isWebTransfer);
         context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到选择文件UI
+     * @param context
+     */
+    public static void toChooseFileUI(Context context){
+        toChooseFileUI(context, false);
     }
 
     /**

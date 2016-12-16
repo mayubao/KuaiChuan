@@ -3,6 +3,8 @@ package io.github.mayubao.kuaichuan.ui;
 import android.app.Activity;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -86,6 +88,9 @@ public class WebTransferActivity extends BaseActivity {
         //关闭热点
         ApMgr.disableAp(getContext());
 
+        //清楚所选中的文件
+        AppContext.getAppContext().getFileInfoMap().clear();
+
         this.finish();
     }
 
@@ -101,6 +106,9 @@ public class WebTransferActivity extends BaseActivity {
 
         closeServer();
 
+        //清楚所选中的文件
+        AppContext.getAppContext().getFileInfoMap().clear();
+
         this.finish();
     }
 
@@ -108,8 +116,7 @@ public class WebTransferActivity extends BaseActivity {
      * 初始化
      */
     private void init(){
-        tv_title.setVisibility(View.INVISIBLE);
-        tv_title.setText(getResources().getString(R.string.title_web_transfer));
+        initUI();
 
         //1.初始化热点
         WifiMgr.getInstance(getContext()).disableWifi();
@@ -142,7 +149,50 @@ public class WebTransferActivity extends BaseActivity {
         ApMgr.configApState(getContext(), ssid); // change Ap state :boolean
 
 
-        tv_tip_1.setText(getResources().getString(R.string.tip_web_transfer_first_tip).replace("{hotspot}", ssid));
+//        tv_tip_1.setText(getResources().getString(R.string.tip_web_transfer_first_tip).replace("{hotspot}", ssid));
+    }
+
+    /**
+     * 初始化UI
+     */
+    private void initUI() {
+        tv_title.setVisibility(View.VISIBLE);
+        tv_title.setText(getResources().getString(R.string.title_web_transfer));
+
+        String normalColor = "#ff000000";
+        String highlightColor = "#1467CD";
+//        <font color=\'#ff0000\'>【题】</font>
+        String ssid = TextUtils.isNullOrBlank(android.os.Build.DEVICE) ? Constant.DEFAULT_SSID : android.os.Build.DEVICE;
+        String tip1 = getContext().getResources().getString(R.string.tip_web_transfer_first_tip).replace("{hotspot}", ssid);
+        String[] tip1StringArray = tip1.split("\\n");
+        Spanned tip1Spanned = Html.fromHtml("<font color='" + normalColor + "'>" + tip1StringArray[0].trim() + "</font><br>"
+                                        + "<font color='" + normalColor + "'>" + tip1StringArray[1].trim() + "</font><br>"
+                                        + "<font color='" + highlightColor + "'>" + tip1StringArray[2].trim() + "</font>");
+        tv_tip_1.setText(tip1Spanned);
+
+        String tip2 = getContext().getResources().getString(R.string.tip_web_transfer_second_tip);
+        String[] tip2StringArray = tip2.split("\\n");
+        Spanned tip2Spanned = Html.fromHtml("<font color='" + normalColor + "'>" + tip2StringArray[0].trim() + "</font><br>"
+                + "<font color='" + normalColor + "'>" + tip2StringArray[1].trim() + "</font><br>"
+                + "<font color='" + highlightColor + "'>" + tip2StringArray[2].trim() + "</font><br>"
+                + "<font color='" + normalColor + "'>" + tip2StringArray[3].trim() + "</font><br>");
+        tv_tip_2.setText(tip2Spanned);
+
+
+//        String tip1 = getContext().getResources().getString(R.string.tip_web_transfer_first_tip).replace("{hotspot}", ssid);
+//        String[] tip1StringArray = tip1.split("\\n");
+//        Spanned tip1Spanned = Html.fromHtml("<p style='text-align:center'><font color='" + normalColor + "'>" + tip1StringArray[0].trim() + "</font></p>"
+//                + "<p style='text-align:center'><font color='" + normalColor + "'>" + tip1StringArray[1].trim() + "</font></p>"
+//                + "<p style='text-align:center'><font color='" + highlightColor + "'>" + tip1StringArray[2].trim() + "</font></p>");
+//        tv_tip_1.setText(tip1Spanned);
+//
+//        String tip2 = getContext().getResources().getString(R.string.tip_web_transfer_second_tip);
+//        String[] tip2StringArray = tip2.split("\\n");
+//        Spanned tip2Spanned = Html.fromHtml("<p style='text-align:center'><font color='" + normalColor + "'>" + tip2StringArray[0].trim() + "</font></p>"
+//                + "<p style='text-align:center'><font color='" + normalColor + "'>" + tip2StringArray[1].trim() + "</font></p>"
+//                + "<p style='text-align:center'><font color='" + highlightColor + "'>" + tip2StringArray[2].trim() + "</font></p>"
+//                + "<p style='text-align:center'><font color='" + normalColor + "'>" + tip2StringArray[3].trim() + "</font></p>");
+//        tv_tip_2.setText(tip2Spanned);
     }
 
     @OnClick({R.id.tv_back})

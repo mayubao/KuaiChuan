@@ -57,6 +57,12 @@ public class Constant {
 
     public static final String KEY_IP_PORT_INFO = "KEY_IP_PORT_INFO";
 
+
+    /**
+     * 网页传标识
+     */
+    public static final String KEY_WEB_TRANSFER_FLAG = "KEY_WEB_TRANSFER_FLAG";
+
     /**
      * 文件发送方 与 文件接收方 通信信息
      */

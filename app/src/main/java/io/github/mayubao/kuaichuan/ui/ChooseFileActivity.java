@@ -18,6 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.mayubao.kuaichuan.AppContext;
+import io.github.mayubao.kuaichuan.Constant;
 import io.github.mayubao.kuaichuan.R;
 import io.github.mayubao.kuaichuan.common.BaseActivity;
 import io.github.mayubao.kuaichuan.core.entity.FileInfo;
@@ -77,6 +78,12 @@ public class ChooseFileActivity extends BaseActivity {
      */
     SeletedFileListChangedBroadcastReceiver mSeletedFileListChangedBroadcastReceiver = null;
 
+
+    /**
+     * 网页传标识
+     */
+    private boolean mIsWebTransfer = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +113,8 @@ public class ChooseFileActivity extends BaseActivity {
         iv_search.setVisibility(View.INVISIBLE);
 
         search_view.setVisibility(View.GONE);
+
+        mIsWebTransfer = getIntent().getBooleanExtra(Constant.KEY_WEB_TRANSFER_FLAG, false);
 
         mApkInfoFragment = FileInfoFragment.newInstance(FileInfo.TYPE_APK);
         mJpgInfoFragment = FileInfoFragment.newInstance(FileInfo.TYPE_JPG);
@@ -201,6 +210,12 @@ public class ChooseFileActivity extends BaseActivity {
                     ToastUtils.show(getContext(), getContext().getString(R.string.tip_please_select_your_file));
                     return;
                 }
+
+                if(mIsWebTransfer){ //跳转到网页传
+                    NavigatorUtils.toWebTransferUI(getContext());
+                    return;
+                }
+                //跳转到应用间传输
                 NavigatorUtils.toChooseReceiverUI(getContext());
                 break;
             }
