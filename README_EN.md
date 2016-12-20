@@ -1,7 +1,7 @@
 # AnyShare
 [中文](https://github.com/mayubao/KuaiChuan/blob/master/README.md)
 
-This is an android application like AnyShare Application which can transfer file from device to the other device, and include socket communication(tcp, udp communication). If you like it, please give me a like, and if it is helpful to you, please fork it. Welcome your start and fork ^_^.
+This is an android application like AnyShare Application which can transfer files from device to the other device, and include socket communication(tcp, udp communication). If you like it, please give me a like, and if it is helpful to you, please fork it. Welcome your start and fork ^_^.
 
 ## Preview
 
@@ -24,15 +24,15 @@ This is an android application like AnyShare Application which can transfer file
 
 ## What is AnyShare
 
-AnyShare has two point to transfer file:
+AnyShare has two point to transfer files:
 
-1. transfer file from android device 2 android device.
-2. transfer file by the web.
+1. transfer files from android device 2 android device.
+2. transfer files by the web.
 
 In the first point, I custome the protocol like http protocol, and every request has its header and its body.
 its header include file info, eg: length, size, path, screenshot(or thumbnail), and its body is the real file.
 
-In the second point, I custome the micro http server in android. And the file receiver can download files by the web browser.
+In the second point, I custome the micro http server in android. And the file receiver can download files via web browser.
 
 
 ## Test
@@ -49,11 +49,10 @@ stackoverflow  <http://stackoverflow.com/>
 ## Version
 
 ### v1.0 ###
-Complete file transfer from android device to the other android device.
+Complete files transfer from android device to the other android device.
 
 ### v1.1 ###
-Complete file transfer by web.
-
+Complete files transfer via web browser
 
 ## Issue
 QQ:345269374
