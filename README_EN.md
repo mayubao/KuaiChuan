@@ -1,0 +1,61 @@
+# AnyShare
+[中文](https://github.com/mayubao/KuaiChuan/blob/master/README.md)
+
+This is an android application like AnyShare Application which can transfer file from device to the other device, and include socket communication(tcp, udp communication). If you like it, please give me a like, and if it is helpful to you, please fork it. Welcome your start and fork ^_^.
+
+## Preview
+
+### Home ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/home.gif)
+
+### File Sender ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_1.gif)
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_2.gif)
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fs_3.gif)
+### File Receiver ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fr_1.gif)
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/fr_2.gif)
+
+### Web Transfer(20161218 add) ###
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/w_1.gif)
+
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/w_2.jpg)
+![Alt text](https://github.com/mayubao/KuaiChuan/blob/master/ScreenShot/w_3.jpg)
+
+## What is AnyShare
+
+AnyShare has two point to transfer file:
+
+1. transfer file from android device 2 android device.
+2. transfer file by the web.
+
+In the first point, I custome the protocol like http protocol, and every request has its header and its body.
+its header include file info, eg: length, size, path, screenshot(or thumbnail), and its body is the real file.
+
+In the second point, I custome the micro http server in android. And the file receiver can download files by the web browser.
+
+
+## Test
+（Test must be in reallly Android device）
+Runnig normally in android devices. eg Meilan 2, Huawei SCL-TL00, Vivo xs1.
+
+## Thanks
+
+google: <http://www.google.com>
+
+stackoverflow  <http://stackoverflow.com/>
+
+
+## Version
+
+### v1.0 ###
+Complete file transfer from android device to the other android device.
+
+### v1.1 ###
+Complete file transfer by web.
+
+
+## Issue
+QQ:345269374
+
+Email:345269374@qq.com

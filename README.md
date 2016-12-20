@@ -1,4 +1,5 @@
 # KuaiChuan(仿茄子快传)
+[English](https://github.com/mayubao/KuaiChuan/blob/master/README_EN.md)
 
 仿茄子快传的一款文件传输应用， 涉及到Socket通信，包括TCP，UDP通信。（喜欢的给一个star, 有帮助的给一个fork， 欢迎Star和Fork ^_^）
 
@@ -22,9 +23,16 @@
 
 ## 原理
 
-快传是模仿 茄子快传来实现的,主要是是通过设备间发送文件。 文件传输在文件发送端或者是文件接收端通过自定义协议的Socket通信来实现。
-由于文件接收方和文件发送方都是文件的缩略图
-这里采用了header + body的自定义协议, header部分包括了文件的信息（长度，大小，缩略图）， body部分就是文件
+
+快传有两种方式可以传输文件：
+
+1. Android应用端发送到Android应用端（必须安装应用）
+2. 通过Web浏览器来实现文件的传送 （不必安装应用）
+
+第一种方式主要是是通过设备间发送文件。 文件传输在文件发送端或者是文件接收端通过自定义协议的Socket通信来实现。由于文件接收方和文件发送方都要有文件的缩略图，这里采用了header + body的自定义协议, header部分包括了文件的信息（长度，大小，缩略图）， body部分就是文件。
+
+第二种方式主要是在android应用端架设微型Http服务器来实现文件的传输。这里可以用ftp来实现，为什么不用ftp呢？因为没有缩略图，这是重点！
+
 
 ## 测试
 
@@ -50,4 +58,4 @@ stackoverflow  <http://stackoverflow.com/>
 ## issue
 QQ:345269374
 
-Emial:345269374@qq.com
+Email:345269374@qq.com
