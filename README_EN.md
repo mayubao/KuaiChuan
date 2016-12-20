@@ -49,10 +49,10 @@ stackoverflow  <http://stackoverflow.com/>
 ## Version
 
 ### v1.0 ###
-Complete files transfer from android device to the other android device.
+Complete files transmission from android device to the other android device.
 
 ### v1.1 ###
-Complete files transfer via web browser
+Complete files transmission via web browser
 
 ## Issue
 
