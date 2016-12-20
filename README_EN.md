@@ -3,6 +3,8 @@
 
 This is an android application like AnyShare Application which can transfer files from device to the other device, and include socket communication(tcp, udp communication). If you like it, please give me a like, and if it is helpful to you, please fork it. Welcome your start and fork ^_^.
 
+[Download](http://fir.im/6ntz) click the Download text to download the app.
+
 ## Preview
 
 ### Home ###
