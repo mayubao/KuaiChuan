@@ -14,6 +14,17 @@ import io.github.mayubao.kuaichuan.utils.StatusBarUtils;
  */
 public class BaseActivity extends AppCompatActivity {
 
+
+    /**
+     * 写文件的请求码
+     */
+    public static final int  REQUEST_CODE_WRITE_FILE = 200;
+
+    /**
+     * 读取文件的请求码
+     */
+    public static final int  REQUEST_CODE_READ_FILE = 201;
+
     Context mContext;
     ProgressDialog mProgressDialog;
 

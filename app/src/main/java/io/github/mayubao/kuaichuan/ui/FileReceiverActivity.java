@@ -1,9 +1,13 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -49,6 +53,7 @@ import io.github.mayubao.kuaichuan.ui.adapter.FileReceiverAdapter;
 public class FileReceiverActivity extends BaseActivity {
 
     private static final String TAG = FileReceiverActivity.class.getSimpleName();
+
     /**
      * Topbar相关UI
      */
@@ -162,10 +167,40 @@ public class FileReceiverActivity extends BaseActivity {
 
         mIpPortInfo = (IpPortInfo) getIntent().getSerializableExtra(Constant.KEY_IP_PORT_INFO);
 
+
+        //Android6.0 requires android.permission.READ_EXTERNAL_STORAGE
+        //TODO
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_FILE);
+        }else{
+            initServer(); //启动接收服务
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_WRITE_FILE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                initServer(); //启动接收服务
+            } else {
+                // Permission Denied
+                ToastUtils.show(this, getResources().getString(R.string.tip_permission_denied_and_not_receive_file));
+                onBackPressed();
+            }
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    /**
+     * 开启文件接收端服务
+     */
+    private void initServer() {
         mReceiverServer = new ServerRunnable(Constant.DEFAULT_SERVER_PORT);
         new Thread(mReceiverServer).start();
     }
-
 
     /**
      * 更新进度 和 耗时的 View

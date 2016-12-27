@@ -1,5 +1,6 @@
 package io.github.mayubao.kuaichuan.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,11 +42,14 @@ public class FileInfoFragment extends Fragment {
     private List<FileInfo> mFileInfoList;
     private FileInfoAdapter mFileInfoAdapter;
 
+    @SuppressLint("ValidFragment")
     public FileInfoFragment(){
-
+        super();
     }
 
+    @SuppressLint("ValidFragment")
     public FileInfoFragment(int type) {
+        super();
         this.mType = type;
     }
 
@@ -76,13 +80,20 @@ public class FileInfoFragment extends Fragment {
             gv.setNumColumns(1);
         }
 
+        //Android6.0 requires android.permission.READ_EXTERNAL_STORAGE
+        init();//初始化界面
+
+        return rootView;
+    }
+
+    private void init() {
         if(mType == FileInfo.TYPE_APK){
             new GetFileInfoListTask(getContext(), FileInfo.TYPE_APK).executeOnExecutor(AppContext.MAIN_EXECUTOR);
         }else if(mType == FileInfo.TYPE_JPG){
             new GetFileInfoListTask(getContext(), FileInfo.TYPE_JPG).executeOnExecutor(AppContext.MAIN_EXECUTOR);
-        }else if(mType == FileInfo.TYPE_MP3){
+        } else if (mType == FileInfo.TYPE_MP3) {
             new GetFileInfoListTask(getContext(), FileInfo.TYPE_MP3).executeOnExecutor(AppContext.MAIN_EXECUTOR);
-        }else if(mType == FileInfo.TYPE_MP4){
+        } else if (mType == FileInfo.TYPE_MP4) {
             new GetFileInfoListTask(getContext(), FileInfo.TYPE_MP4).executeOnExecutor(AppContext.MAIN_EXECUTOR);
         }
 
@@ -111,8 +122,6 @@ public class FileInfoFragment extends Fragment {
                 mFileInfoAdapter.notifyDataSetChanged();
             }
         });
-
-        return rootView;
     }
 
     @Override

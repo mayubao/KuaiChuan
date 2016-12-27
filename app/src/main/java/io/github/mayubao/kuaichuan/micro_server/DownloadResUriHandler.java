@@ -72,7 +72,9 @@ public class DownloadResUriHandler implements ResUriHandler {
 //            image/jpeg
             printStream.println("Content-Length:" + fileInfo.getSize());
 //            printStream.println("Content-Type:image/png");
+//            multipart/mixed,text/html,image/png,image/jpeg,image/gif,image/x-xbitmap,application/vnd.oma.dd+xml,*/*
             printStream.println("Content-Type:application/octet-stream");
+//            printStream.println("Content-Type:multipart/mixed,text/html,image/png,image/jpeg,image/gif,image/x-xbitmap,application/vnd.oma.dd+xml,*/*");
             printStream.println();
 
 

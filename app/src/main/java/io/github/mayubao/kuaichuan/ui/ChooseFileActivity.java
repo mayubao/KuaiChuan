@@ -1,11 +1,15 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.Manifest;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -29,6 +33,12 @@ import io.github.mayubao.kuaichuan.ui.view.ShowSelectedFileInfoDialog;
 import io.github.mayubao.kuaichuan.utils.NavigatorUtils;
 
 public class ChooseFileActivity extends BaseActivity {
+
+
+    /**
+     * 获取文件的请求码
+     */
+    public static final int  REQUEST_CODE_GET_FILE_INFOS = 200;
 
     /**
      * Topbar相关UI
@@ -116,6 +126,35 @@ public class ChooseFileActivity extends BaseActivity {
 
         mIsWebTransfer = getIntent().getBooleanExtra(Constant.KEY_WEB_TRANSFER_FLAG, false);
 
+        //Android6.0 requires android.permission.READ_EXTERNAL_STORAGE
+        //TODO
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_GET_FILE_INFOS);
+        }else{
+            initData();//初始化数据
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_GET_FILE_INFOS) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                initData();
+            } else {
+                // Permission Denied
+                ToastUtils.show(this, getResources().getString(R.string.tip_permission_denied_and_not_get_file_info_list));
+            }
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
         mApkInfoFragment = FileInfoFragment.newInstance(FileInfo.TYPE_APK);
         mJpgInfoFragment = FileInfoFragment.newInstance(FileInfo.TYPE_JPG);
         mMp3InfoFragment = FileInfoFragment.newInstance(FileInfo.TYPE_MP3);

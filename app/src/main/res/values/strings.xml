@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">茄子快传</string>
+    <string name="app_name">XO快传</string>
     <string name="action_settings">Settings</string>
 
     <string name="str_send">我要发送</string>
@@ -115,6 +115,10 @@
     </string>
     <string name="str_restart_hotspot">重启热点</string>
     <string name="title_web_transfer">网页传</string>
+    <string name="tip_permission_denied">权限被拒绝</string>
+    <string name="tip_permission_denied_and_not_get_file_info_list">权限被拒绝，无法获取文件列表</string>
+    <string name="tip_permission_denied_and_not_receive_file">权限被拒绝，无法接收文件</string>
+    <string name="tip_permission_denied_and_not_send_file" >权限被拒绝，无法发送文件文件</string>
 
 </resources>
 

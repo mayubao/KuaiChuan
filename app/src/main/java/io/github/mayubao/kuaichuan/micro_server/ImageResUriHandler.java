@@ -1,6 +1,7 @@
 package io.github.mayubao.kuaichuan.micro_server;
 
 import android.app.Activity;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +24,8 @@ import io.github.mayubao.kuaichuan.core.utils.FileUtils;
  * Contact me 345269374@qq.com
  */
 public class ImageResUriHandler implements ResUriHandler {
+
+    private static final String TAG = ImageResUriHandler.class.getSimpleName();
 
     /**
      * default app logo png name
@@ -78,7 +81,8 @@ public class ImageResUriHandler implements ResUriHandler {
 //            image/jpeg
             printStream.println("Content-Length:" + fileInfo.getSize());
 //            printStream.println("Content-Type:image/png");
-            printStream.println("Content-Type:application/octet-stream");
+//            printStream.println("Content-Type:application/octet-stream");
+            printStream.println("Content-Type:multipart/mixed,text/html,image/png,image/jpeg,image/gif,image/x-xbitmap,application/vnd.oma.dd+xml,*/*");
             printStream.println();
 
             //check the screenshot image file exist in disk? if exist return the file, or create the screen image file
@@ -86,6 +90,7 @@ public class ImageResUriHandler implements ResUriHandler {
                 FileUtils.autoCreateScreenShot(mActivity, fileInfo.getFilePath());
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.i(TAG, "------>>>Auto create screen shot failure : " + e.getMessage());
             }
 
             File file = null;

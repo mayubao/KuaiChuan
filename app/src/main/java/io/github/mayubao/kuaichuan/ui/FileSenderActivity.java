@@ -1,9 +1,13 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ListView;
@@ -25,6 +29,7 @@ import io.github.mayubao.kuaichuan.common.BaseActivity;
 import io.github.mayubao.kuaichuan.core.FileSender;
 import io.github.mayubao.kuaichuan.core.entity.FileInfo;
 import io.github.mayubao.kuaichuan.core.utils.FileUtils;
+import io.github.mayubao.kuaichuan.core.utils.ToastUtils;
 import io.github.mayubao.kuaichuan.core.utils.WifiMgr;
 import io.github.mayubao.kuaichuan.ui.adapter.FileSenderAdapter;
 
@@ -63,6 +68,8 @@ public class FileSenderActivity extends BaseActivity {
      */
     @Bind(R.id.lv_result)
     ListView lv_result;
+
+    List<Map.Entry<String, FileInfo>> mFileInfoMapList;
 
     FileSenderAdapter mFileSenderAdapter;
 
@@ -229,8 +236,44 @@ public class FileSenderActivity extends BaseActivity {
 //        Collections.sort(fileInfoList, Constant.DEFAULT_COMPARATOR2);
 
         List<Map.Entry<String, FileInfo>> fileInfoMapList = new ArrayList<Map.Entry<String, FileInfo>>(AppContext.getAppContext().getFileInfoMap().entrySet());
+        mFileInfoMapList = fileInfoMapList;
         Collections.sort(fileInfoMapList, Constant.DEFAULT_COMPARATOR);
 
+
+        //Android6.0 requires android.permission.READ_EXTERNAL_STORAGE
+        //TODO
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_FILE);
+        }else{
+            initSendServer(fileInfoMapList);//开启传送文件
+        }
+
+//        AppContext.FILE_SENDER_EXECUTOR.execute();
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_WRITE_FILE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                initSendServer(mFileInfoMapList);//开启传送文件
+            } else {
+                // Permission Denied
+                ToastUtils.show(this, getResources().getString(R.string.tip_permission_denied_and_not_send_file));
+                finishNormal();
+            }
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    /**
+     * 开始传送文件
+     * @param fileInfoMapList
+     */
+    private void initSendServer(List<Map.Entry<String, FileInfo>> fileInfoMapList) {
         String serverIp = WifiMgr.getInstance(getContext()).getIpAddressFromHotspot();
         for(Map.Entry<String, FileInfo> entry : fileInfoMapList){
             final FileInfo fileInfo = entry.getValue();
@@ -292,8 +335,6 @@ public class FileSenderActivity extends BaseActivity {
             mFileSenderList.add(fileSender);
             AppContext.FILE_SENDER_EXECUTOR.execute(fileSender);
         }
-
-//        AppContext.FILE_SENDER_EXECUTOR.execute();
     }
 
     @OnClick({R.id.tv_back})
