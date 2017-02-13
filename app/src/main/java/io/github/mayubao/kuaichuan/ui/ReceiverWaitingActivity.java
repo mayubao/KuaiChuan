@@ -1,9 +1,19 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -24,6 +34,7 @@ import io.github.mayubao.kuaichuan.core.entity.IpPortInfo;
 import io.github.mayubao.kuaichuan.core.receiver.WifiAPBroadcastReceiver;
 import io.github.mayubao.kuaichuan.core.utils.ApMgr;
 import io.github.mayubao.kuaichuan.core.utils.TextUtils;
+import io.github.mayubao.kuaichuan.core.utils.ToastUtils;
 import io.github.mayubao.kuaichuan.core.utils.WifiMgr;
 import io.github.mayubao.kuaichuan.ui.view.RadarLayout;
 import io.github.mayubao.kuaichuan.utils.NavigatorUtils;
@@ -31,6 +42,12 @@ import io.github.mayubao.kuaichuan.utils.NavigatorUtils;
 public class ReceiverWaitingActivity extends BaseActivity {
 
     private static final String TAG = ReceiverWaitingActivity.class.getSimpleName();
+
+    /**
+     * Android 6.0 modify wifi status need this permission: android.permission.WRITE_SETTINGS
+     */
+    public static final int REQUEST_CODE_WRITE_SETTINGS = 7879;
+
     /**
      * Topbar相关UI
      */
@@ -79,7 +96,66 @@ public class ReceiverWaitingActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
-        init();
+        /**
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_SETTINGS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_SETTINGS}, REQUEST_CODE_WRITE_SETTINGS);
+        }else{
+//            initData();//初始化数据
+            init();
+        }
+         */
+
+        initWithGetPermission(this);
+    }
+
+    /**
+     * 初始化并且获取权限
+     * @param context
+     */
+    public void initWithGetPermission(Activity context){
+        boolean permission;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            permission = Settings.System.canWrite(context);
+        } else {
+            permission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_SETTINGS) == PackageManager.PERMISSION_GRANTED;
+        }
+        if (permission) {
+            //do your code
+            init();
+        }  else {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                context.startActivityForResult(intent, REQUEST_CODE_WRITE_SETTINGS);
+            } else {
+                ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_SETTINGS}, REQUEST_CODE_WRITE_SETTINGS);
+            }
+        }
+    }
+
+    @SuppressLint("NewApi")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_WRITE_SETTINGS && Settings.System.canWrite(this)){
+            Log.d("TAG", "CODE_WRITE_SETTINGS_PERMISSION success");
+            //do your code
+            init();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_WRITE_SETTINGS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //do your code
+            init();
+        } else {
+            // Permission Denied
+            ToastUtils.show(this, getResources().getString(R.string.tip_permission_denied_and_not_modify_ap_info));
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
     }
 
     @Override
