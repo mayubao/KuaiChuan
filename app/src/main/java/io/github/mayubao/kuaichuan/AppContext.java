@@ -2,6 +2,8 @@ package io.github.mayubao.kuaichuan;
 
 import android.app.Application;
 
+import com.tencent.bugly.Bugly;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -16,6 +18,11 @@ import io.github.mayubao.kuaichuan.core.entity.FileInfo;
  * Contact me 345269374@qq.com
  */
 public class AppContext extends Application {
+
+    /**
+     * Bugly App Id
+     */
+    public static final String BUGLY_APP_ID = "fc178c6e5c";
 
     /**
      * 主要的线程池
@@ -42,6 +49,9 @@ public class AppContext extends Application {
     public void onCreate() {
         super.onCreate();
         this.mAppContext = this;
+
+        //初始化Bugly
+        Bugly.init(getApplicationContext(), BUGLY_APP_ID, true);
     }
 
     /**

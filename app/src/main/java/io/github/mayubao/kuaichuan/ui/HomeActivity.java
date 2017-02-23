@@ -169,6 +169,27 @@ public class HomeActivity extends BaseActivity
         ll_mini_main.setVisibility(View.GONE);
 
         updateBottomData();
+
+//        测试bugly集成
+//        testBugly();
+    }
+
+    /**
+     * 测试bugly集成
+     */
+    private void testBugly(){
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(10 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                throw new RuntimeException("======>>>这是茄子快传的一个错误测试");
+            }
+        }.start();
     }
 
     /**

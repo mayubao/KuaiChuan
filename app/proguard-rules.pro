@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+
+# bugly 加密相关
+#-dontwarn com.tencent.bugly.**
+#-keep public class com.tencent.bugly.**{*;}
