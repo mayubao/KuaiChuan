@@ -25,6 +25,11 @@ public class BaseActivity extends AppCompatActivity {
      */
     public static final int  REQUEST_CODE_READ_FILE = 201;
 
+    /**
+     * 打开GPS的请求码
+     */
+    public static final int  REQUEST_CODE_OPEN_GPS = 205;
+
     Context mContext;
     ProgressDialog mProgressDialog;
 

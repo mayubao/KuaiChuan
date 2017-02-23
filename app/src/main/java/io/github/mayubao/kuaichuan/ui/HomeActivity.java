@@ -1,11 +1,15 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -103,14 +107,39 @@ public class HomeActivity extends BaseActivity
 
         ButterKnife.bind(this);
 
-        //初始化
-        init();
+
+        //Android6.0 requires android.permission.READ_EXTERNAL_STORAGE
+        //TODO
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_FILE);
+        }else{
+            //初始化
+            init();
+        }
     }
 
     @Override
     protected void onResume() {
         updateBottomData();
         super.onResume();
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_WRITE_FILE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //初始化
+                init();
+            } else {
+                // Permission Denied
+                ToastUtils.show(this, getResources().getString(R.string.tip_permission_denied_and_not_send_file));
+                finish();
+            }
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     /**

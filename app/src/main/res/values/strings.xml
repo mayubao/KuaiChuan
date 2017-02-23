@@ -121,6 +121,7 @@
     <string name="tip_permission_denied_and_not_send_file" >权限被拒绝，无法发送文件文件</string>
 
     <string name="tip_permission_denied_and_not_modify_ap_info">权限被拒绝，无法修改热点信息</string>
+    <string name="tip_permission_denied_and_not_get_wifi_info_list">权限拒绝，无法获取附近的网络列表</string>
 
 </resources>
 

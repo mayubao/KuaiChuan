@@ -39,6 +39,9 @@ import io.github.mayubao.kuaichuan.core.utils.WifiMgr;
 import io.github.mayubao.kuaichuan.ui.view.RadarLayout;
 import io.github.mayubao.kuaichuan.utils.NavigatorUtils;
 
+/**
+ * 接收等待文件传输UI
+ */
 public class ReceiverWaitingActivity extends BaseActivity {
 
     private static final String TAG = ReceiverWaitingActivity.class.getSimpleName();

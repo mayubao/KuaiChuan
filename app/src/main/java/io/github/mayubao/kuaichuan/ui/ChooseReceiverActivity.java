@@ -1,9 +1,14 @@
 package io.github.mayubao.kuaichuan.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -114,6 +119,23 @@ public class ChooseReceiverActivity extends BaseActivity {
         this.finish();
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_OPEN_GPS) {
+            if (grantResults.length>0&&grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                // 允许
+                updateUI();
+            } else {
+                // Permission Denied
+                ToastUtils.show(this, getResources().getString(R.string.tip_permission_denied_and_not_get_wifi_info_list));
+            }
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
     /**
      * 成功进入 文件发送列表UI 调用的finishNormal()
      */
@@ -137,7 +159,26 @@ public class ChooseReceiverActivity extends BaseActivity {
             WifiMgr.getInstance(getContext()).openWifi();
         }
 
+        //Android 6.0 扫描wifi 需要开启定位
+        if (Build.VERSION.SDK_INT >= 23 ) { //Android 6.0 扫描wifi 需要开启定位
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.LOCATION)!=PackageManager.PERMISSION_GRANTED){
+                // 获取wifi连接需要定位权限,没有获取权限
+                ActivityCompat.requestPermissions(this, new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_WIFI_STATE,
+                }, REQUEST_CODE_OPEN_GPS);
+                return;
+            }
+        }else{//Android 6.0 以下的直接开启扫描
+            updateUI();
+        }
+    }
 
+    /**
+     * 更新UI
+     */
+    private void updateUI(){
         getOrUpdateWifiScanResult();
         mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_TO_SHOW_SCAN_RESULT), 1000);
     }
