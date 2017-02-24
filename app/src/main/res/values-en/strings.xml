@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">XO Any-Share</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="str_send">Send</string>
+    <string name="str_receive">Receive</string>
+    <string name="str_start">Start</string>
+    <string name="str_stop">Stop</string>
+    <string name="action_disable_ap">Close Ap</string>
+    <string name="str_loadding">Loading...</string>
+    <string name="str_size">size</string>
+    <string name="str_path">File Address：</string>
+    <string name="str_wh">With：</string>
+    <string name="str_suspend">suspend</string>
+    <string name="str_resume">resume</string>
+    <string name="str_apk">APK</string>
+    <string name="str_jpeg">JPEG</string>
+    <string name="str_mp3">MP3</string>
+    <string name="str_mp4">MP4</string>
+    <string name="str_apk_desc">App</string>
+    <string name="str_jpeg_desc">Pic</string>
+    <string name="str_mp3_desc">Music</string>
+    <string name="str_mp4_desc">Vedio</string>
+    <string name="str_desc">Desc</string>
+    <string name="action_client">Send</string>
+    <string name="action_server">Receive</string>
+    <string name="action_apk">apk</string>
+    <string name="action_jpg">jpg</string>
+    <string name="action_mp3">MP3</string>
+    <string name="action_mp4">MP4</string>
+    <string name="tip_loading">Loading...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_name">Name</string>
+    <string name="title_activity_choose_file">ChooseFileActivity</string>
+    <string name="tip_search">Please input the file name</string>
+    <string name="str_title">Title</string>
+    <string name="title_choose_file">Choose File</string>
+    <string name="tip_has_no_apk_info">Have no apk info</string>
+    <string name="str_has_selected">Seleted（0）</string>
+    <string name="str_next">Next</string>
+    <string name="tip_please_click_user_avatar_to_receive">Click the avator of the receiver to connect.</string>
+    <string name="tip_waiting_file_sender_connect">Waiting Sender connecting...</string>
+    <string name="str_device_name">Device name:</string>
+    <string name="str_mac">MAC Adderss</string>
+    <string name="str_transfer_progress">Transfer Progress</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="title_file_sender">文件发送</string>
+    <string name="str_has_selected_detail">Choosed（%d）</string>
+    <string name="tip_please_select_your_file">Please choose your file that want to send</string>
+    <string name="str_check">Check</string>
+    <string name="title_file_receiver">File receiver</string>
+    <string name="title_file_transfer">File transfer</string>
+    <string name="tip_now_has_task_is_running_exist_now">Currently there are files in delivery！ \n And do you want to exist?</string>
+    <string name="str_yes">YES</string>
+    <string name="str_no">NO</string>
+    <string name="title_selected_file_list">Selected File</string>
+    <string name="str_selected_file_info_detail">{count} files, total size : {size}</string>
+    <string name="str_selected_file_info_detail_default">0 file, total size: 0K</string>
+    <string name="str_clear">Clear</string>
+    <string name="tip_now_is_initial">Initializing，please wait...</string>
+    <string name="tip_now_init_is_finish">Successful initialization!</string>
+    <string name="tip_is_waitting_connect">Waiting for connecting...</string>
+    <string name="str_has_no_any_msg">You have no any msg~</string>
+    <string name="str_update_version">Udate version</string>
+    <string name="str_feedback">Help and feedback</string>
+    <string name="str_computer_transfer">Computer transfer</string>
+    <string name="str_web_transfer">Web transfer</string>
+
+    <!--<string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.MyFloatingButtonBehavior</string>-->
+    <string name="str_my_floating_action_button_behavior">io.github.mayubao.kuaichuan.ui.view.FooterBehaviorDependAppBar</string>
+
+
+    <string-array name="array_res">
+        <item>App</item>
+        <item>Pic</item>
+        <item>Music</item>
+        <item>Video</item>
+    </string-array>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="str_connect_device_count">Connected Device</string>
+    <string name="str_receive_file">Received File</string>
+    <string name="str_save_stream">Save Traffic</string>
+    <string name="str_0">0</string>
+    <string name="str_install">Install</string>
+    <string name="str_open">Open</string>
+    <string name="str_run">Run</string>
+    <string name="tip_call_back_agin_and_exist">Click again and exist {appName} </string>
+    <string name="str_unit_mb">MB</string>
+    <string name="str_has_send">Transfer</string>
+    <string name="str_has_time">Time</string>
+    <string name="str_second">Second</string>
+    <string name="str_about_me">About author</string>
+    <string name="tip_next_version_update">This function will be in the next version</string>
+    <string name="title_about_me">About author</string>
+    <string name="str_about_me_desc">Author：mayubao</string>
+    <string name="str_about_me_qq">QQ：345269374</string>
+    <string name="str_about_me_email">Emial:345269374@qq.com</string>
+    <string name="str_about_me_github">Github:https://github.com/mayubao/KuaiChuan/</string>
+    <string name="str_weiguan">Check</string>
+    <string name="tip_web_transfer_first_tip">
+        Step 1 \n
+        Let your friends join in your hotspot \n
+        \"{hotspot}\"
+    </string>
+    <string name="tip_web_transfer_second_tip">
+        Step 2 \n
+        Let your friends input the following url in the browser \n
+        http://192.168.43.1:3999 \n
+        Or scan the QR code
+    </string>
+    <string name="str_restart_hotspot">Restart hotspot</string>
+    <string name="title_web_transfer">Web transfer</string>
+    <string name="tip_permission_denied">Permission Denied</string>
+    <string name="tip_permission_denied_and_not_get_file_info_list">Permission denied，And not get the file info list</string>
+    <string name="tip_permission_denied_and_not_receive_file">Permission denied，not receive file</string>
+    <string name="tip_permission_denied_and_not_send_file" >Permission denied，not send file</string>
+
+    <string name="tip_permission_denied_and_not_modify_ap_info">Permission denied，not modify the hotspot info</string>
+    <string name="tip_permission_denied_and_not_get_wifi_info_list">Permission denied，and not get wifi device info list</string>
+
+</resources>
+
